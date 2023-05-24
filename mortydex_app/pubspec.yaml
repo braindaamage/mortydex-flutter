@@ -1,0 +1,23 @@
+name: mortydex
+description: The Rock&MortyDex App.
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: '>=3.0.1 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  mdx_core:
+    path: ../packages/mdx_core
+  mdx_logger:
+    path: ../packages/mdx_logger
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
