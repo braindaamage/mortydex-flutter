@@ -5,8 +5,8 @@
 // @dart=2.19
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:mdx_logger/logger_provider.dart' as _i2;
 import 'package:mdx_logger/mdx_logger.dart' as _i3;
-import 'package:mdx_logger/providers/console_provider.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint
@@ -20,10 +20,10 @@ import 'package:mockito/mockito.dart' as _i1;
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
-/// A class which mocks [ConsoleProvider].
+/// A class which mocks [LoggerProvider].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockConsoleProvider extends _i1.Mock implements _i2.ConsoleProvider {
+class MockLoggerProvider extends _i1.Mock implements _i2.LoggerProvider {
   @override
   void call({
     required String? message,
