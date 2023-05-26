@@ -1,5 +1,3 @@
 library mdx_core;
 
-class HelloWorld {
-  static String helloWorld = 'Hello World!';
-}
+export './exceptions/mdx_exception.dart';
