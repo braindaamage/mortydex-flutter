@@ -1,44 +1,17 @@
 import 'logger_provider.dart';
 import './providers/console_provider.dart';
 
-class Logger {
-  static final _Logger _logger = _Logger([ConsoleProvider()]);
+part 'mdx_logger_imp.dart';
 
+abstract class Logger {
+  static final Logger _instance = _Logger([ConsoleProvider()]);
+  void _log({required String message, required LogTypes type});
+  void _addProvider(LoggerProvider provider);
   static void log({required String message, LogTypes type = LogTypes.info}) {
-    _logger.log(message: message, type: type);
+    _instance._log(message: message, type: type);
   }
 
   static void addProvider(LoggerProvider provider) {
-    _logger.addProvider(provider);
+    _instance._addProvider(provider);
   }
-}
-
-class _Logger {
-  final Set<LoggerProvider> _providers = {};
-
-  _Logger(List<LoggerProvider> providers) {
-    for (var provider in providers) {
-      addProvider(provider);
-    }
-  }
-
-  void log({required String message, required LogTypes type}) {
-    for (var provider in _providers) {
-      provider(message: message, type: type);
-    }
-  }
-
-  void addProvider(LoggerProvider provider) {
-    _providers.add(provider);
-  }
-}
-
-enum LogTypes {
-  info,
-  warning,
-  error,
-}
-
-extension ToString on LogTypes {
-  String toShortString() => toString().split('.').last.toUpperCase();
 }
