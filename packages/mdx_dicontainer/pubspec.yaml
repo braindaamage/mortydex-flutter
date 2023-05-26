@@ -1,7 +1,7 @@
 name: mdx_dicontainer
 description: Dependency Injection Container Library
 version: 0.0.1
-homepage:
+homepage: 'https://mortydex.com'
 
 environment:
   sdk: '>=3.0.1 <4.0.0'
