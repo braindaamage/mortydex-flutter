@@ -13,6 +13,8 @@ dependencies:
     path: ../packages/mdx_core
   mdx_logger:
     path: ../packages/mdx_logger
+  mdx_dicontainer:
+    path: ../packages/mdx_dicontainer
 
 dev_dependencies:
   flutter_test:
