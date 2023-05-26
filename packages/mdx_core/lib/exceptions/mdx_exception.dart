@@ -8,15 +8,3 @@ class MDXException implements Exception {
     return _message;
   }
 }
-
-// class _MDXException implements MDXException {
-//   final dynamic message;
-//   _MDXException([this.message]);
-
-//   @override
-//   String toString() {
-//     final name = runtimeType.toString();
-//     if (message == null) return name;
-//     return '$name: $message}';
-//   }
-// }
