@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mdx_desing_system/mdx_desing_system.dart';
 
 void main() => runApp(const MyApp());
 
@@ -7,6 +8,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Text(
+      'hola',
+      style: TextStyle(
+        color: MDXColors.primary.p1,
+      ),
+    );
   }
 }
