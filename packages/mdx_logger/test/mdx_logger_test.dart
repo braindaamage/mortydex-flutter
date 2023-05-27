@@ -27,11 +27,7 @@ void main() {
       verify(
         mockLoggerProvider(
           message: message,
-          type: argThat(
-            contains(
-              LogTypes.info,
-            ),
-          ),
+          type: LogTypes.info,
         ),
       );
     });
