@@ -9,20 +9,27 @@ void _throwConditional({required bool condition, required Object error}) {
 typedef FactoryCreator<T> = T Function();
 
 // anstrac type of stored service
-abstract class _MDXDIService<Service extends Object> {
+abstract interface class _MDXDIService<Service extends Object> {
   Service get instance;
+  void invalidate();
 }
 
 // Normal singleton model
 class _MDXDISingleton<Service extends Object> implements _MDXDIService {
   late Service _instance;
+  FactoryCreator<Service> creator;
 
-  _MDXDISingleton(FactoryCreator<Service> creator) {
+  _MDXDISingleton(this.creator) {
     _instance = creator();
   }
 
   @override
   Service get instance => _instance;
+
+  @override
+  void invalidate() {
+    _instance = creator();
+  }
 }
 
 // Lazy singleton model
@@ -37,6 +44,11 @@ class _MDXDILazySingleton<Service extends Object> implements _MDXDIService {
     _instance ??= creator();
     return _instance!;
   }
+
+  @override
+  void invalidate() {
+    _instance = creator();
+  }
 }
 
 // Factory model
@@ -46,6 +58,9 @@ class _MDXDIFactory<Service extends Object> implements _MDXDIService {
 
   @override
   Object get instance => creator();
+
+  @override
+  void invalidate() {}
 }
 
 // enum for type of stored factories
@@ -82,6 +97,12 @@ class _MDXDIContainerImplementation implements MDXDIContainer {
       error: Exception("Service don't found!"),
     );
     return _services[Service.toString()]!.instance as Service;
+  }
+
+  void _invalidate() {
+    _services.forEach((_, service) {
+      service.invalidate();
+    });
   }
 
   @override
@@ -121,5 +142,10 @@ class _MDXDIContainerImplementation implements MDXDIContainer {
       name: Service.toString(),
       serviceType: _MDXDIServiceType.singleton,
     );
+  }
+
+  @override
+  void invalidate() {
+    _invalidate();
   }
 }
