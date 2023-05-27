@@ -1,24 +1,29 @@
-import 'dart:developer' as developer;
-
 import '../mdx_logger.dart';
 import '../logger_provider.dart';
 
+typedef PrintConsole = Function(String message,
+    {Object? error, StackTrace? stackTrace});
+
 class ConsoleProvider implements LoggerProvider {
   static const _identifier = '\x1B[34mMDX Logger\x1B[0m';
+  final PrintConsole _printConsole;
+
+  ConsoleProvider({required PrintConsole printConsole})
+      : _printConsole = printConsole;
 
   @override
   void call({required String message, required LogTypes type}) {
     switch (type) {
       case LogTypes.warning:
-        developer.log(
+        _printConsole(
             '$_identifier \x1B[32m[${_printWarning(type.toShortString())}\x1B[32m]: $message\x1B[0m');
         break;
       case LogTypes.error:
-        developer.log(
+        _printConsole(
             '$_identifier \x1B[32m[${_printError(type.toShortString())}\x1B[32m]: $message\x1B[0m');
         break;
       default:
-        developer.log(
+        _printConsole(
             '$_identifier \x1B[32m[${_printInfo(type.toShortString())}\x1B[32m]: $message\x1B[0m');
     }
   }
