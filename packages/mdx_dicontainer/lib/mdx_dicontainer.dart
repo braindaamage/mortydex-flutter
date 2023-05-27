@@ -10,7 +10,9 @@ abstract class MDXDIContainer {
   Service resolve<Service extends Object>();
   void registerFactory<Service extends Object>(FactoryCreator<Service> creator);
   void registerLazySingleton<Service extends Object>(
-      FactoryCreator<Service> creator);
+    FactoryCreator<Service> creator,
+  );
   void registerSingleton<Service extends Object>(
-      FactoryCreator<Service> creator);
+    FactoryCreator<Service> creator,
+  );
 }

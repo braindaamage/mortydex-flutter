@@ -1,4 +1,17 @@
-include: package:flutter_lints/flutter.yaml
+include: package:lint/analysis_options_package.yaml
 
-# Additional information about this file can be found at
-# https://dart.dev/guides/language/analysis-options
+# analyzer:
+#   exclude:
+    
+linter:
+  rules:
+    - always_declare_return_types
+    # ------ Disable individual rules ----- #
+    #                 ---                   #
+    # Turn off what you don't like.         #
+    # ------------------------------------- #
+
+#    avoid_print: false
+#    unnecessary_await_in_return: false
+#    type_annotate_public_apis: false
+#    avoid_function_literals_in_foreach_calls: false

@@ -1,6 +1,6 @@
-import 'logger_provider.dart';
 import 'dart:developer' as developer;
-import './providers/console_provider.dart';
+import 'package:mdx_logger/logger_provider.dart';
+import 'package:mdx_logger/providers/console_provider.dart';
 
 part 'mdx_logger_imp.dart';
 

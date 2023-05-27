@@ -14,14 +14,14 @@ class _Logger implements Logger {
   final Set<LoggerProvider> _providers = {};
 
   _Logger(List<LoggerProvider> providers) {
-    for (var provider in providers) {
+    for (final provider in providers) {
       _addProvider(provider);
     }
   }
 
   @override
   void _log({required String message, required LogTypes type}) {
-    for (var provider in _providers) {
+    for (final provider in _providers) {
       provider(message: message, type: type);
     }
   }

@@ -68,13 +68,10 @@ class _MDXDIContainerImplementation implements MDXDIContainer {
     switch (serviceType) {
       case _MDXDIServiceType.factory:
         _services[name] = _MDXDIFactory(creator);
-        break;
       case _MDXDIServiceType.lazySingleton:
         _services[name] = _MDXDILazySingleton(creator);
-        break;
       case _MDXDIServiceType.singleton:
         _services[name] = _MDXDISingleton(creator);
-        break;
       default:
     }
   }
@@ -82,7 +79,7 @@ class _MDXDIContainerImplementation implements MDXDIContainer {
   Service _resolve<Service extends Object>() {
     _throwConditional(
       condition: _services[Service.toString()] == null,
-      error: Exception('Service don\'t found!'),
+      error: Exception("Service don't found!"),
     );
     return _services[Service.toString()]!.instance as Service;
   }
@@ -95,7 +92,8 @@ class _MDXDIContainerImplementation implements MDXDIContainer {
 
   @override
   void registerFactory<Service extends Object>(
-      FactoryCreator<Service> creator) {
+    FactoryCreator<Service> creator,
+  ) {
     _register(
       creator: creator,
       name: Service.toString(),
@@ -105,7 +103,8 @@ class _MDXDIContainerImplementation implements MDXDIContainer {
 
   @override
   void registerLazySingleton<Service extends Object>(
-      FactoryCreator<Service> creator) {
+    FactoryCreator<Service> creator,
+  ) {
     _register(
       creator: creator,
       name: Service.toString(),
@@ -115,7 +114,8 @@ class _MDXDIContainerImplementation implements MDXDIContainer {
 
   @override
   void registerSingleton<Service extends Object>(
-      FactoryCreator<Service> creator) {
+    FactoryCreator<Service> creator,
+  ) {
     _register(
       creator: creator,
       name: Service.toString(),
