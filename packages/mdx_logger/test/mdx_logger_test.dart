@@ -1,8 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mdx_logger/logger_provider.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
+import 'package:mdx_logger/logger_provider.dart';
 import 'package:mdx_logger/mdx_logger.dart';
 
 /// Generate Mock with 'dart run build_runner build'
@@ -12,7 +12,7 @@ import './mdx_logger_test.mocks.dart';
 void main() {
   final mockLoggerProvider = MockLoggerProvider();
 
-  group("useLogger", () {
+  group("Logger", () {
     setUp(() {
       Logger.addProvider(mockLoggerProvider);
     });
