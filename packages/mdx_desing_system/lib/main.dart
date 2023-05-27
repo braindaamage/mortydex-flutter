@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mdx_desing_system/mdx_desing_system.dart';
+import 'package:mdx_desing_system/demo/pages/home_page.dart';
 
 void main() => runApp(const MyApp());
 
@@ -8,11 +8,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      'hola',
-      style: TextStyle(
-        color: MDXColors.primary.p1,
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSwatch(
+          primarySwatch: Colors.grey,
+        ),
+        useMaterial3: true,
       ),
+      title: 'MDX Desing System',
+      home: const HomePage(),
     );
   }
 }
