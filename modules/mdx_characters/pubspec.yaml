@@ -9,6 +9,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  mdx_core:
+    path: ../../packages/mdx_core
 
 dev_dependencies:
   flutter_test:
