@@ -9,8 +9,18 @@ class MDXObservable<T extends Object> {
 
   void next(T newValue) => _streamController.add(newValue);
 
-  void listen(void Function(T value)? onData) {
-    _listener = _streamController.stream.listen(onData);
+  void listen(
+    void Function(T value)? onData, {
+    Function? onError,
+    void Function()? onDone,
+    bool? cancelOnError,
+  }) {
+    _listener = _streamController.stream.listen(
+      onData,
+      onError: onError,
+      onDone: onDone,
+      cancelOnError: cancelOnError,
+    );
   }
 
   void cancel() {
