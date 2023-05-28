@@ -18,6 +18,12 @@ class MDXSubject<T extends Object> {
       observer.next(newValue);
     }
   }
+
+  void onError(Object error, [StackTrace? stackTrace]) {
+    for (final observer in _observers) {
+      observer.onError(error, stackTrace);
+    }
+  }
 }
 
 class _MDXSubjectStream<T extends Object> extends MDXObservable<T> {

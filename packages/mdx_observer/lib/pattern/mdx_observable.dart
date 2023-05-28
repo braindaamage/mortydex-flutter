@@ -9,6 +9,12 @@ class MDXObservable<T extends Object> {
 
   void next(T newValue) => _streamController.add(newValue);
 
+  void onError(Object error, [StackTrace? stackTrace]) =>
+      _streamController.addError(
+        error,
+        stackTrace,
+      );
+
   void listen(
     void Function(T value)? onData, {
     Function? onError,
