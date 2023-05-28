@@ -1,5 +1,8 @@
 import 'package:mdx_characters/mdx_characters.dart';
+import 'package:mdx_core/mdx_core.dart';
 
 abstract interface class GetCharacterListByIdsUseCaseProcotol {
-  Future<List<MDXCharacter>> call({required List<int> byIds});
+  Future<MDXResponse<List<MDXCharacter>, MDXFailure>> call({
+    required List<int> byIds,
+  });
 }
