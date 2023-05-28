@@ -29,7 +29,5 @@ class MDXObservable<T extends Object> {
     );
   }
 
-  void cancel() {
-    _listener?.cancel();
-  }
+  Future<void>? cancel() => _listener?.cancel();
 }
