@@ -5,8 +5,6 @@ class MDXObservable<T extends Object> {
 
   final StreamController<T> _streamController = StreamController.broadcast();
 
-  Stream<T> get stream => _streamController.stream;
-
   void next(T newValue) => _streamController.add(newValue);
 
   void onError(Object error, [StackTrace? stackTrace]) =>

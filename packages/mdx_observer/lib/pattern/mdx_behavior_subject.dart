@@ -4,7 +4,7 @@ import 'package:mdx_observer/pattern/mdx_subject.dart';
 class BehaviorSubject<T extends Object> extends MDXSubject<T> {
   T? storedValue;
 
-  BehaviorSubject(this.storedValue);
+  BehaviorSubject([this.storedValue]);
 
   @override
   void addObserver(MDXObservable<Object> observer) {

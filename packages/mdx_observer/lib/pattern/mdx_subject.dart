@@ -34,8 +34,8 @@ class _MDXSubjectStream<T extends Object> extends MDXObservable<T> {
   }
 
   @override
-  void cancel() {
+  Future<void>? cancel() {
     _subject.removeObserver(this);
-    super.cancel();
+    return super.cancel();
   }
 }

@@ -4,5 +4,5 @@
 library mdx_observer;
 
 export './pattern/mdx_behavior_subject.dart';
-export './pattern/mdx_observer.dart';
+export './pattern/mdx_observable.dart';
 export './pattern/mdx_subject.dart';

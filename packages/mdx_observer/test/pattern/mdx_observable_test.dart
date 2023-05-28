@@ -1,4 +1,4 @@
-import 'package:mdx_observer/pattern/mdx_observable.dart';
+import 'package:mdx_observer/mdx_observer.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:test/test.dart';
