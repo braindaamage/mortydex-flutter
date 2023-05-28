@@ -50,23 +50,19 @@ void main() {
       verify(mockFakeClass.fakeOnError(error));
     });
 
-    test('should no more interaction when cancel listener', () async {
+    test('should no more interaction when close onservable', () async {
       // arrange
       const number = 1;
       final MDXObservable<int> observable = MDXObservable();
       observable.listen(mockFakeClass.fakeOnDone);
-      final mockFakeClass2 = MockFakeClass();
       // act
       observable.next(number);
       await untilCalled(mockFakeClass.fakeOnDone(any));
-      await observable.cancel();
-      observable.listen(mockFakeClass2.fakeOnDone);
-      observable.next(number);
-      await untilCalled(mockFakeClass2.fakeOnDone(any));
+      await observable.close();
       // assert
       verify(mockFakeClass.fakeOnDone(number));
-      verify(mockFakeClass2.fakeOnDone(number));
       verifyNoMoreInteractions(mockFakeClass);
+      expect(observable.hasClosed, true);
     });
   });
 }
