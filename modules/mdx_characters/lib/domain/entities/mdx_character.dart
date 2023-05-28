@@ -1,6 +1,7 @@
-import 'package:mdx_characters/domain/entities/module.dart';
+import 'package:equatable/equatable.dart';
+import 'package:mdx_characters/mdx_characters.dart';
 
-class MDXCharacter {
+class MDXCharacter extends Equatable {
   final int id;
   final String name;
   final MDXCharacterStatus status;
@@ -10,7 +11,7 @@ class MDXCharacter {
   final String imageUrl;
   final DateTime created;
 
-  MDXCharacter({
+  const MDXCharacter({
     required this.id,
     required this.name,
     required this.status,
@@ -20,4 +21,7 @@ class MDXCharacter {
     required this.imageUrl,
     required this.created,
   });
+
+  @override
+  List<Object?> get props => [id];
 }
