@@ -1,5 +1,8 @@
 import 'package:equatable/equatable.dart';
-import 'package:mdx_characters/mdx_characters.dart';
+
+enum MDXCharacterStatus { alive, dead, unknown }
+
+enum MDXCharacterGender { female, male, genderless, unknown }
 
 class MDXCharacter extends Equatable {
   final int id;
