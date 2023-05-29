@@ -1,4 +1,3 @@
-// mdx_core/test/utils/either_test.dart
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mdx_core/utils/either.dart';
 

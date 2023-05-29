@@ -1,4 +1,4 @@
 library mdx_core;
 
-export './domain/module.dart';
-export './exceptions/module.dart';
+export './errors/module.dart';
+export './utils/module.dart';
