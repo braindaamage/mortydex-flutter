@@ -1,15 +1,10 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mdx_core/mdx_core.dart';
 import 'package:mdx_characters/mdx_characters.dart';
-import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
-import 'mdx_get_character_by_id_imp_test.mocks.dart';
+import 'use_case_mockito_generator.mocks.dart';
 
-// Need run 'dart run build_runner build' for regenerate mock
-@GenerateMocks([], customMocks: [
-  MockSpec<MDXCharacterRepository>(as: #MockMDXCharacterRepository)
-])
 void main() {
   late MDXGetCharacterByIdImp usecase;
   late MockMDXCharacterRepository mockCharacterRepository;
