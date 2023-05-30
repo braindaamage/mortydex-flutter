@@ -7,6 +7,7 @@ void main() {
       test('should return value when fold is called with left function', () {
         final either = Left('left');
         final result = either.fold((l) => l, (r) => 'right');
+        expect(either.left, equals('left'));
         expect(result, equals('left'));
       });
 
@@ -30,6 +31,7 @@ void main() {
       test('should return value when fold is called with right function', () {
         final either = Right('right');
         final result = either.fold((l) => 'left', (r) => r);
+        expect(either.right, equals('right'));
         expect(result, equals('right'));
       });
 
