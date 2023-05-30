@@ -17,7 +17,7 @@ void main() {
 
   const tNameFilter = 'Test Character';
   const tGenderFilter = MDXCharacterGender.male;
-  final filter = MDXCharacterFilter(name: tNameFilter, gender: tGenderFilter);
+  const filter = MDXCharacterFilter(name: tNameFilter, gender: tGenderFilter);
   final tCharacters = [
     MDXCharacter(
       id: 1,
