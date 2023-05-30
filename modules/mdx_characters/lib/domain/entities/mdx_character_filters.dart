@@ -1,6 +1,7 @@
+import 'package:equatable/equatable.dart';
 import 'package:mdx_characters/mdx_characters.dart';
 
-class MDXCharacterFilter {
+class MDXCharacterFilter extends Equatable {
   final String? name;
   final MDXCharacterStatus? status;
   final String? species;
@@ -14,4 +15,7 @@ class MDXCharacterFilter {
     this.type,
     this.gender,
   });
+
+  @override
+  List<Object?> get props => [name, status, species, type, gender];
 }
