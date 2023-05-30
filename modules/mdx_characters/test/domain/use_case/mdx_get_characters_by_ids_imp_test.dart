@@ -3,11 +3,13 @@ import 'package:mdx_core/mdx_core.dart';
 import 'package:mdx_characters/mdx_characters.dart';
 import 'package:mockito/mockito.dart';
 
-import 'use_case_mockito_generator.mocks.dart';
+import '../../fixtures/entities/character_mocks.dart';
+import '../../fixtures/interfaces/mdx_character_repository.mocks.dart';
 
 void main() {
   late MDXGetCharactersByIdsImp usecase;
   late MockMDXCharacterRepository mockCharacterRepository;
+  final mockCharacterDataGenerator = MockCharacterDataGenerator();
 
   setUp(() {
     mockCharacterRepository = MockMDXCharacterRepository();
@@ -15,43 +17,36 @@ void main() {
         MDXGetCharactersByIdsImp(characterRepository: mockCharacterRepository);
   });
 
-  const tId = 1;
-  const tIdList = [tId];
-  final tCharacter = [
-    MDXCharacter(
-      id: tId,
-      name: 'Test Character',
-      status: MDXCharacterStatus.alive,
-      species: 'Human',
-      type: 'Normal',
-      gender: MDXCharacterGender.male,
-      imageUrl: 'https://test.com/image.png',
-      created: DateTime.now(),
-    ),
+  final tCharacters = [
+    mockCharacterDataGenerator.getMockCharacter(),
+    mockCharacterDataGenerator.getMockCharacter(),
   ];
+  final tIdList = tCharacters.map((character) => character.id).toList();
 
-  test('should get characters from the repository', () async {
-    // arrange
-    when(mockCharacterRepository.getCharactersByIds(any))
-        .thenAnswer((_) async => tCharacter);
-    // act
-    final result = await usecase(tIdList);
-    // assert
-    expect(result.right, equals(tCharacter));
-    verify(mockCharacterRepository.getCharactersByIds(tIdList));
-    verifyNoMoreInteractions(mockCharacterRepository);
-  });
+  group('MDXGetCharactersByIdsImp', () {
+    test('should get characters from the repository', () async {
+      // arrange
+      when(mockCharacterRepository.getCharactersByIds(any))
+          .thenAnswer((_) async => tCharacters);
+      // act
+      final result = await usecase(tIdList);
+      // assert
+      expect(result.right, equals(tCharacters));
+      verify(mockCharacterRepository.getCharactersByIds(tIdList));
+      verifyNoMoreInteractions(mockCharacterRepository);
+    });
 
-  test('should return Failure when call to repository throws an exception',
-      () async {
-    // arrange
-    when(mockCharacterRepository.getCharactersByIds(any))
-        .thenThrow(Exception());
-    // act
-    final result = await usecase(tIdList);
-    // assert
-    expect(result.left, isInstanceOf<Failure>());
-    verify(mockCharacterRepository.getCharactersByIds(tIdList));
-    verifyNoMoreInteractions(mockCharacterRepository);
+    test('should return Failure when call to repository throws an exception',
+        () async {
+      // arrange
+      when(mockCharacterRepository.getCharactersByIds(any))
+          .thenThrow(Exception());
+      // act
+      final result = await usecase(tIdList);
+      // assert
+      expect(result.left, isInstanceOf<Failure>());
+      verify(mockCharacterRepository.getCharactersByIds(tIdList));
+      verifyNoMoreInteractions(mockCharacterRepository);
+    });
   });
 }
