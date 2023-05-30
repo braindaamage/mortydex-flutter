@@ -1,3 +1,4 @@
+// domain/entities/mdx_character_filters.dart
 import 'package:equatable/equatable.dart';
 import 'package:mdx_characters/mdx_characters.dart';
 
@@ -8,7 +9,7 @@ class MDXCharacterFilter extends Equatable {
   final String? type;
   final MDXCharacterGender? gender;
 
-  MDXCharacterFilter({
+  const MDXCharacterFilter({
     this.name,
     this.status,
     this.species,
