@@ -8,8 +8,8 @@ class MockCharacterDataGenerator {
   final Random _random = Random();
   final Set<int> _usedIds = {};
 
-  MDXCharacter getMockCharacter() {
-    int id = generateUniqueId();
+  MDXCharacter getMockCharacter([int? tId]) {
+    int id = tId ?? generateUniqueId();
 
     return MDXCharacter(
       id: id,
