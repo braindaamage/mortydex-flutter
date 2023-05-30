@@ -32,7 +32,7 @@ void main() {
     tCharacter,
   ];
 
-  group('SUCCESS CASES', () {
+  group('Success Cases', () {
     test('should get all characters from the datasource', () async {
       // arrange
       when(mockDataSource.getAllCharacters(any))
@@ -82,7 +82,7 @@ void main() {
     });
   });
 
-  group('THROW EXCEPTIONS', () {
+  group('Throw Exceptions', () {
     test(
         'should throw an exception when there is an error getting characters from the datasource',
         () async {
