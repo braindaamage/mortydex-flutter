@@ -11,10 +11,6 @@ dependencies:
     sdk: flutter
   mdx_core:
     path: ../packages/mdx_core
-  mdx_logger:
-    path: ../packages/mdx_logger
-  mdx_dicontainer:
-    path: ../packages/mdx_dicontainer
   mdx_characters:
     path: ../modules/mdx_characters
 

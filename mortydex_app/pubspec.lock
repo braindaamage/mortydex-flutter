@@ -121,20 +121,6 @@ packages:
       relative: true
     source: path
     version: "0.0.1"
-  mdx_dicontainer:
-    dependency: "direct main"
-    description:
-      path: "../packages/mdx_dicontainer"
-      relative: true
-    source: path
-    version: "0.0.1"
-  mdx_logger:
-    dependency: "direct main"
-    description:
-      path: "../packages/mdx_logger"
-      relative: true
-    source: path
-    version: "0.0.1"
   meta:
     dependency: transitive
     description:
