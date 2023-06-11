@@ -25,6 +25,7 @@ abstract class MDXNetwork {
     Map<String, String>? queryParams,
   });
 
+  // ignore: use_setters_to_change_properties
   static void overrideDefault(MDXNetwork instance) {
     _instance = instance;
   }

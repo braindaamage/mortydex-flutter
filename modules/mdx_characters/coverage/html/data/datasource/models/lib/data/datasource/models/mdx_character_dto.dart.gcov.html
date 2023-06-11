@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2023-06-11 02:22:24</td>
+            <td class="headerValue">2023-06-11 16:46:59</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -64,7 +64,7 @@
 <span id="L2"><span class="lineNum">       2</span>              : import 'package:mdx_core/mdx_core.dart';</span>
 <span id="L3"><span class="lineNum">       3</span>              : </span>
 <span id="L4"><span class="lineNum">       4</span>              : class MDXCharacterDTO extends MDXCharacter {</span>
-<span id="L5"><span class="lineNum">       5</span> <span class="tlaGNC tlaBgGNC">           1 :   const MDXCharacterDTO({</span></span>
+<span id="L5"><span class="lineNum">       5</span> <span class="tlaGNC tlaBgGNC">           2 :   const MDXCharacterDTO({</span></span>
 <span id="L6"><span class="lineNum">       6</span>              :     required super.id,</span>
 <span id="L7"><span class="lineNum">       7</span>              :     required super.name,</span>
 <span id="L8"><span class="lineNum">       8</span>              :     required super.status,</span>
@@ -75,41 +75,41 @@
 <span id="L13"><span class="lineNum">      13</span>              :     required super.created,</span>
 <span id="L14"><span class="lineNum">      14</span>              :   });</span>
 <span id="L15"><span class="lineNum">      15</span>              : </span>
-<span id="L16"><span class="lineNum">      16</span> <span class="tlaGNC">           1 :   factory MDXCharacterDTO.fromJson(Map&lt;String, dynamic&gt; json) {</span></span>
+<span id="L16"><span class="lineNum">      16</span> <span class="tlaGNC">           2 :   factory MDXCharacterDTO.fromJson(Map&lt;String, dynamic&gt; json) {</span></span>
 <span id="L17"><span class="lineNum">      17</span>              :     try {</span>
-<span id="L18"><span class="lineNum">      18</span> <span class="tlaGNC">           1 :       return MDXCharacterDTO(</span></span>
-<span id="L19"><span class="lineNum">      19</span> <span class="tlaGNC">           1 :         id: json['id'],</span></span>
-<span id="L20"><span class="lineNum">      20</span> <span class="tlaGNC">           1 :         name: json['name'],</span></span>
-<span id="L21"><span class="lineNum">      21</span> <span class="tlaGNC">           2 :         status: _statusFromString(json['status']),</span></span>
-<span id="L22"><span class="lineNum">      22</span> <span class="tlaGNC">           1 :         species: json['species'],</span></span>
-<span id="L23"><span class="lineNum">      23</span> <span class="tlaGNC">           1 :         type: json['type'],</span></span>
-<span id="L24"><span class="lineNum">      24</span> <span class="tlaGNC">           2 :         gender: _genderFromString(json['gender']),</span></span>
-<span id="L25"><span class="lineNum">      25</span> <span class="tlaGNC">           1 :         imageUrl: json['image'],</span></span>
-<span id="L26"><span class="lineNum">      26</span> <span class="tlaGNC">           2 :         created: DateTime.parse(json['created']),</span></span>
+<span id="L18"><span class="lineNum">      18</span> <span class="tlaGNC">           2 :       return MDXCharacterDTO(</span></span>
+<span id="L19"><span class="lineNum">      19</span> <span class="tlaGNC">           2 :         id: json['id'],</span></span>
+<span id="L20"><span class="lineNum">      20</span> <span class="tlaGNC">           2 :         name: json['name'],</span></span>
+<span id="L21"><span class="lineNum">      21</span> <span class="tlaGNC">           4 :         status: _statusFromString(json['status']),</span></span>
+<span id="L22"><span class="lineNum">      22</span> <span class="tlaGNC">           2 :         species: json['species'],</span></span>
+<span id="L23"><span class="lineNum">      23</span> <span class="tlaGNC">           2 :         type: json['type'],</span></span>
+<span id="L24"><span class="lineNum">      24</span> <span class="tlaGNC">           4 :         gender: _genderFromString(json['gender']),</span></span>
+<span id="L25"><span class="lineNum">      25</span> <span class="tlaGNC">           2 :         imageUrl: json['image'],</span></span>
+<span id="L26"><span class="lineNum">      26</span> <span class="tlaGNC">           4 :         created: DateTime.parse(json['created']),</span></span>
 <span id="L27"><span class="lineNum">      27</span>              :       );</span>
 <span id="L28"><span class="lineNum">      28</span>              :     } catch (error) {</span>
 <span id="L29"><span class="lineNum">      29</span> <span class="tlaGNC">           1 :       throw MapperException();</span></span>
 <span id="L30"><span class="lineNum">      30</span>              :     }</span>
 <span id="L31"><span class="lineNum">      31</span>              :   }</span>
 <span id="L32"><span class="lineNum">      32</span>              : </span>
-<span id="L33"><span class="lineNum">      33</span> <span class="tlaGNC">           1 :   static MDXCharacterStatus _statusFromString(String status) {</span></span>
+<span id="L33"><span class="lineNum">      33</span> <span class="tlaGNC">           2 :   static MDXCharacterStatus _statusFromString(String status) {</span></span>
 <span id="L34"><span class="lineNum">      34</span>              :     switch (status) {</span>
-<span id="L35"><span class="lineNum">      35</span> <span class="tlaGNC">           1 :       case 'Alive':</span></span>
+<span id="L35"><span class="lineNum">      35</span> <span class="tlaGNC">           2 :       case 'Alive':</span></span>
 <span id="L36"><span class="lineNum">      36</span>              :         return MDXCharacterStatus.alive;</span>
-<span id="L37"><span class="lineNum">      37</span> <span class="tlaGNC">           1 :       case 'Dead':</span></span>
+<span id="L37"><span class="lineNum">      37</span> <span class="tlaGNC">           2 :       case 'Dead':</span></span>
 <span id="L38"><span class="lineNum">      38</span>              :         return MDXCharacterStatus.dead;</span>
 <span id="L39"><span class="lineNum">      39</span>              :       default:</span>
 <span id="L40"><span class="lineNum">      40</span>              :         return MDXCharacterStatus.unknown;</span>
 <span id="L41"><span class="lineNum">      41</span>              :     }</span>
 <span id="L42"><span class="lineNum">      42</span>              :   }</span>
 <span id="L43"><span class="lineNum">      43</span>              : </span>
-<span id="L44"><span class="lineNum">      44</span> <span class="tlaGNC">           1 :   static MDXCharacterGender _genderFromString(String gender) {</span></span>
+<span id="L44"><span class="lineNum">      44</span> <span class="tlaGNC">           2 :   static MDXCharacterGender _genderFromString(String gender) {</span></span>
 <span id="L45"><span class="lineNum">      45</span>              :     switch (gender) {</span>
-<span id="L46"><span class="lineNum">      46</span> <span class="tlaGNC">           1 :       case 'Female':</span></span>
+<span id="L46"><span class="lineNum">      46</span> <span class="tlaGNC">           2 :       case 'Female':</span></span>
 <span id="L47"><span class="lineNum">      47</span>              :         return MDXCharacterGender.female;</span>
-<span id="L48"><span class="lineNum">      48</span> <span class="tlaGNC">           1 :       case 'Male':</span></span>
+<span id="L48"><span class="lineNum">      48</span> <span class="tlaGNC">           2 :       case 'Male':</span></span>
 <span id="L49"><span class="lineNum">      49</span>              :         return MDXCharacterGender.male;</span>
-<span id="L50"><span class="lineNum">      50</span> <span class="tlaGNC">           1 :       case 'Genderless':</span></span>
+<span id="L50"><span class="lineNum">      50</span> <span class="tlaGNC">           2 :       case 'Genderless':</span></span>
 <span id="L51"><span class="lineNum">      51</span>              :         return MDXCharacterGender.genderless;</span>
 <span id="L52"><span class="lineNum">      52</span>              :       default:</span>
 <span id="L53"><span class="lineNum">      53</span>              :         return MDXCharacterGender.unknown;</span>

@@ -22,6 +22,7 @@ dev_dependencies:
   mockito: ^5.4.1
   build_runner: ^2.4.4
   faker: ^2.1.0
+  http: ^1.0.0
 
 flutter:
   uses-material-design: true
