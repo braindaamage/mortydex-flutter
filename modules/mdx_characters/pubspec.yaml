@@ -12,6 +12,8 @@ dependencies:
   equatable: ^2.0.5
   mdx_core:
     path: ../../packages/mdx_core
+  mdx_network:
+    path: ../../packages/mdx_network
 
 dev_dependencies:
   flutter_test:

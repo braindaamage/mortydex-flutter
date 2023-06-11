@@ -330,6 +330,13 @@ packages:
       relative: true
     source: path
     version: "0.0.1"
+  mdx_network:
+    dependency: "direct main"
+    description:
+      path: "../../packages/mdx_network"
+      relative: true
+    source: path
+    version: "0.0.1"
   meta:
     dependency: transitive
     description:

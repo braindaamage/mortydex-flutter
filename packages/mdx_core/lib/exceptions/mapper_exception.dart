@@ -1,0 +1,1 @@
+class MapperException implements Exception {}

@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mdx_characters/mdx_characters.dart';
 import 'package:mockito/mockito.dart';
+import 'package:mdx_characters/mdx_characters.dart';
 
 import '../fixtures/entities/character_mocks.dart';
 import '../fixtures/interfaces/mdx_character_data_source.mocks.dart';
