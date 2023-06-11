@@ -16,7 +16,7 @@ class MDXCharacterCloudDataSourceImp implements MDXCharacterCloudDataSource {
       if (json['results'] == null) throw MapperException();
       final list = json['results'] as List<dynamic>;
       return list
-          .map((charater) => MDXCharacterDTO.fromJson(charater))
+          .map((charater) => MDXCharacterDTO.fromJson(charater).toEntity())
           .toList();
     }, queryParams: {
       'page': page.toString(),

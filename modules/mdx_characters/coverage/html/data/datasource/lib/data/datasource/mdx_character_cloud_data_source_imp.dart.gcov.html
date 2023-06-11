@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2023-06-11 16:46:59</td>
+            <td class="headerValue">2023-06-11 19:41:38</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -78,7 +78,7 @@
 <span id="L16"><span class="lineNum">      16</span> <span class="tlaGNC">           1 :       if (json['results'] == null) throw MapperException();</span></span>
 <span id="L17"><span class="lineNum">      17</span> <span class="tlaGNC">           1 :       final list = json['results'] as List&lt;dynamic&gt;;</span></span>
 <span id="L18"><span class="lineNum">      18</span>              :       return list</span>
-<span id="L19"><span class="lineNum">      19</span> <span class="tlaGNC">           3 :           .map((charater) =&gt; MDXCharacterDTO.fromJson(charater))</span></span>
+<span id="L19"><span class="lineNum">      19</span> <span class="tlaGNC">           4 :           .map((charater) =&gt; MDXCharacterDTO.fromJson(charater).toEntity())</span></span>
 <span id="L20"><span class="lineNum">      20</span> <span class="tlaGNC">           1 :           .toList();</span></span>
 <span id="L21"><span class="lineNum">      21</span> <span class="tlaGNC">           1 :     }, queryParams: {</span></span>
 <span id="L22"><span class="lineNum">      22</span> <span class="tlaGNC">           1 :       'page': page.toString(),</span></span>
