@@ -31,12 +31,12 @@ class _FakeMDXCharacter_0 extends _i1.SmartFake implements _i2.MDXCharacter {
         );
 }
 
-/// A class which mocks [MDXCharacterDataSource].
+/// A class which mocks [MDXCharacterCloudDataSource].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockMDXCharacterDataSource extends _i1.Mock
-    implements _i2.MDXCharacterDataSource {
-  MockMDXCharacterDataSource() {
+class MockMDXCharacterCloudDataSource extends _i1.Mock
+    implements _i2.MDXCharacterCloudDataSource {
+  MockMDXCharacterCloudDataSource() {
     _i1.throwOnMissingStub(this);
   }
 

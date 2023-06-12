@@ -6,6 +6,6 @@ import 'package:mdx_characters/mdx_characters.dart';
 // Need run 'dart run build_runner build' for regenerate mock
 
 @GenerateMocks([], customMocks: [
-  MockSpec<MDXCharacterDataSource>(as: #MockMDXCharacterDataSource),
+  MockSpec<MDXCharacterCloudDataSource>(as: #MockMDXCharacterCloudDataSource),
 ])
 void main() {}

@@ -6,13 +6,14 @@ import '../fixtures/entities/character_mocks.dart';
 import '../fixtures/interfaces/mdx_character_data_source.mocks.dart';
 
 void main() {
-  late MockMDXCharacterDataSource mockDataSource;
+  late MockMDXCharacterCloudDataSource mockCloudDataSource;
   late MDXCharacterRepositoryImp repository;
   final mockCharacterDataGenerator = MockCharacterDataGenerator();
 
   setUp(() {
-    mockDataSource = MockMDXCharacterDataSource();
-    repository = MDXCharacterRepositoryImp(dataSource: mockDataSource);
+    mockCloudDataSource = MockMDXCharacterCloudDataSource();
+    repository =
+        MDXCharacterRepositoryImp(cloudDataSource: mockCloudDataSource);
   });
 
   final tCharacter = mockCharacterDataGenerator.getMockCharacter();
@@ -30,51 +31,51 @@ void main() {
     group('Success Cases', () {
       test('should get all characters from the datasource', () async {
         // arrange
-        when(mockDataSource.getAllCharacters(any))
+        when(mockCloudDataSource.getAllCharacters(any))
             .thenAnswer((_) async => tCharacters);
         // act
         final result = await repository.getAllCharacters(tPage);
         // assert
         expect(result, equals(tCharacters));
-        verify(mockDataSource.getAllCharacters(tPage));
-        verifyNoMoreInteractions(mockDataSource);
+        verify(mockCloudDataSource.getAllCharacters(tPage));
+        verifyNoMoreInteractions(mockCloudDataSource);
       });
 
       test('should get character by id from the datasource', () async {
         // arrange
-        when(mockDataSource.getCharacterById(any))
+        when(mockCloudDataSource.getCharacterById(any))
             .thenAnswer((_) async => tCharacter);
         // act
         final result = await repository.getCharacterById(tId);
         // assert
         expect(result, equals(tCharacter));
-        verify(mockDataSource.getCharacterById(tId));
-        verifyNoMoreInteractions(mockDataSource);
+        verify(mockCloudDataSource.getCharacterById(tId));
+        verifyNoMoreInteractions(mockCloudDataSource);
       });
 
       test('should get characters by list of ids from the datasource',
           () async {
         // arrange
-        when(mockDataSource.getCharactersByIds(any))
+        when(mockCloudDataSource.getCharactersByIds(any))
             .thenAnswer((_) async => tCharacters);
         // act
         final result = await repository.getCharactersByIds(tListOfIds);
         // assert
         expect(result, equals(tCharacters));
-        verify(mockDataSource.getCharactersByIds(tListOfIds));
-        verifyNoMoreInteractions(mockDataSource);
+        verify(mockCloudDataSource.getCharactersByIds(tListOfIds));
+        verifyNoMoreInteractions(mockCloudDataSource);
       });
 
       test('should get characters by filter from the datasource', () async {
         // arrange
-        when(mockDataSource.getFilteredCharacters(any))
+        when(mockCloudDataSource.getFilteredCharacters(any))
             .thenAnswer((_) async => tCharacters);
         // act
         final result = await repository.getFilteredCharacters(tFilter);
         // assert
         expect(result, equals(tCharacters));
-        verify(mockDataSource.getFilteredCharacters(tFilter));
-        verifyNoMoreInteractions(mockDataSource);
+        verify(mockCloudDataSource.getFilteredCharacters(tFilter));
+        verifyNoMoreInteractions(mockCloudDataSource);
       });
     });
 
@@ -83,52 +84,54 @@ void main() {
           'should throw an exception when there is an error getting characters from the datasource',
           () async {
         // arrange
-        when(mockDataSource.getAllCharacters(any)).thenThrow(Exception());
+        when(mockCloudDataSource.getAllCharacters(any)).thenThrow(Exception());
 
         // assert
         expect(() async => await repository.getAllCharacters(tPage),
             throwsA(isInstanceOf<Exception>()));
-        verify(mockDataSource.getAllCharacters(tPage));
-        verifyNoMoreInteractions(mockDataSource);
+        verify(mockCloudDataSource.getAllCharacters(tPage));
+        verifyNoMoreInteractions(mockCloudDataSource);
       });
 
       test(
           'should throw an exception when there is an error getting character by id from the datasource',
           () async {
         // arrange
-        when(mockDataSource.getCharacterById(any)).thenThrow(Exception());
+        when(mockCloudDataSource.getCharacterById(any)).thenThrow(Exception());
 
         // assert
         expect(() async => await repository.getCharacterById(tId),
             throwsA(isInstanceOf<Exception>()));
-        verify(mockDataSource.getCharacterById(tId));
-        verifyNoMoreInteractions(mockDataSource);
+        verify(mockCloudDataSource.getCharacterById(tId));
+        verifyNoMoreInteractions(mockCloudDataSource);
       });
 
       test(
           'should throw an exception when there is an error getting characters by ids from the datasource',
           () async {
         // arrange
-        when(mockDataSource.getCharactersByIds(any)).thenThrow(Exception());
+        when(mockCloudDataSource.getCharactersByIds(any))
+            .thenThrow(Exception());
 
         // assert
         expect(() async => await repository.getCharactersByIds(tListOfIds),
             throwsA(isInstanceOf<Exception>()));
-        verify(mockDataSource.getCharactersByIds(tListOfIds));
-        verifyNoMoreInteractions(mockDataSource);
+        verify(mockCloudDataSource.getCharactersByIds(tListOfIds));
+        verifyNoMoreInteractions(mockCloudDataSource);
       });
 
       test(
           'should throw an exception when there is an error getting characters by filter from the datasource',
           () async {
         // arrange
-        when(mockDataSource.getFilteredCharacters(any)).thenThrow(Exception());
+        when(mockCloudDataSource.getFilteredCharacters(any))
+            .thenThrow(Exception());
 
         // assert
         expect(() async => await repository.getFilteredCharacters(tFilter),
             throwsA(isInstanceOf<Exception>()));
-        verify(mockDataSource.getFilteredCharacters(tFilter));
-        verifyNoMoreInteractions(mockDataSource);
+        verify(mockCloudDataSource.getFilteredCharacters(tFilter));
+        verifyNoMoreInteractions(mockCloudDataSource);
       });
     });
   });
