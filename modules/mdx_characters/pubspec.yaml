@@ -1,0 +1,30 @@
+name: mdx_characters
+description: Characters Module
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: '>=3.0.2 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  equatable: ^2.0.5
+  mdx_core:
+    path: ../../packages/mdx_core
+  mdx_network:
+    path: ../../packages/mdx_network
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+  mockito: ^5.4.1
+  build_runner: ^2.4.4
+  faker: ^2.1.0
+  http: ^1.0.0
+  mock_mdx_network:
+    path: ../../packages/mock_mdx_network
+
+flutter:
+  uses-material-design: true

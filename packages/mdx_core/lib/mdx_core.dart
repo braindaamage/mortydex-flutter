@@ -1,3 +1,5 @@
 library mdx_core;
 
-export './exceptions/mdx_exception.dart';
+export './errors/module.dart';
+export './utils/module.dart';
+export './exceptions/module.dart';
