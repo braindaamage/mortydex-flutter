@@ -16,7 +16,8 @@ enum Endpoints {
 abstract class MDXNetwork {
   static MDXNetwork _instance = DefaultMDXNetwork(
     client: http.Client(),
-    baseUrl: 'https://rickandmortyapi.com/api/',
+    baseUrl: 'rickandmortyapi.com',
+    baseApi: '/api/',
   );
 
   static MDXNetwork get instance => _instance;
@@ -38,12 +39,15 @@ abstract class MDXNetwork {
 class DefaultMDXNetwork extends MDXNetwork {
   final http.Client _client;
   final String _baseUrl;
+  final String _baseApi;
 
   DefaultMDXNetwork({
     required http.Client client,
     required String baseUrl,
+    required String baseApi,
   })  : _client = client,
-        _baseUrl = baseUrl;
+        _baseUrl = baseUrl,
+        _baseApi = baseApi;
 
   @override
   Future<T> get<T>(
@@ -67,7 +71,7 @@ class DefaultMDXNetwork extends MDXNetwork {
       } else if (decodedResponse is List<dynamic> && fromJsonList != null) {
         return fromJsonList(decodedResponse);
       } else {
-        throw UnimplementedError();
+        throw NetworkTransformationException();
       }
     } else {
       throw NetworkException();
@@ -80,7 +84,7 @@ class DefaultMDXNetwork extends MDXNetwork {
     Map<String, String>? queryParams,
   ]) {
     final path = _generatePath(endpoint, param);
-    return Uri.https(_baseUrl, path, queryParams);
+    return Uri.https(_baseUrl, '$_baseApi$path', queryParams);
   }
 
   String _generatePath(
