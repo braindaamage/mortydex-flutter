@@ -287,7 +287,8 @@ class MockMDXNetwork extends _i1.Mock implements _i6.MDXNetwork {
   @override
   _i3.Future<T> get<T>(
     _i6.Endpoints? endpoint, {
-    required _i6.FromJson<T>? fromJson,
+    _i6.FromJson<T>? fromJson,
+    _i6.FromJsonList<T>? fromJsonList,
     String? param,
     Map<String, String>? queryParams,
   }) =>
@@ -297,6 +298,7 @@ class MockMDXNetwork extends _i1.Mock implements _i6.MDXNetwork {
           [endpoint],
           {
             #fromJson: fromJson,
+            #fromJsonList: fromJsonList,
             #param: param,
             #queryParams: queryParams,
           },
@@ -309,6 +311,7 @@ class MockMDXNetwork extends _i1.Mock implements _i6.MDXNetwork {
                   [endpoint],
                   {
                     #fromJson: fromJson,
+                    #fromJsonList: fromJsonList,
                     #param: param,
                     #queryParams: queryParams,
                   },
@@ -323,6 +326,7 @@ class MockMDXNetwork extends _i1.Mock implements _i6.MDXNetwork {
                 [endpoint],
                 {
                   #fromJson: fromJson,
+                  #fromJsonList: fromJsonList,
                   #param: param,
                   #queryParams: queryParams,
                 },

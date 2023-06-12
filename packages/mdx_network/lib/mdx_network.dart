@@ -4,10 +4,13 @@ import 'package:http/http.dart' as http;
 import 'package:mdx_core/mdx_core.dart';
 
 typedef FromJson<T> = T Function(Map<String, dynamic>);
+typedef FromJsonList<T> = T Function(List<dynamic>);
 
 enum Endpoints {
   characters,
   character,
+  charactersByIds,
+  charactersFilter,
 }
 
 abstract class MDXNetwork {
@@ -20,7 +23,8 @@ abstract class MDXNetwork {
 
   Future<T> get<T>(
     Endpoints endpoint, {
-    required FromJson<T> fromJson,
+    FromJson<T>? fromJson,
+    FromJsonList<T>? fromJsonList,
     String? param,
     Map<String, String>? queryParams,
   });
@@ -44,7 +48,8 @@ class DefaultMDXNetwork extends MDXNetwork {
   @override
   Future<T> get<T>(
     Endpoints endpoint, {
-    required FromJson<T> fromJson,
+    FromJson<T>? fromJson,
+    FromJsonList<T>? fromJsonList,
     String? param,
     Map<String, String>? queryParams,
   }) async {
@@ -56,7 +61,14 @@ class DefaultMDXNetwork extends MDXNetwork {
     final response = await _client.get(uri);
 
     if (response.statusCode == 200) {
-      return fromJson(jsonDecode(response.body) as Map<String, dynamic>);
+      final decodedResponse = jsonDecode(response.body);
+      if (decodedResponse is Map<String, dynamic> && fromJson != null) {
+        return fromJson(decodedResponse);
+      } else if (decodedResponse is List<dynamic> && fromJsonList != null) {
+        return fromJsonList(decodedResponse);
+      } else {
+        throw UnimplementedError();
+      }
     } else {
       throw NetworkException();
     }
@@ -80,6 +92,10 @@ class DefaultMDXNetwork extends MDXNetwork {
         return 'character';
       case Endpoints.character:
         return 'character/$param';
+      case Endpoints.charactersByIds:
+        return 'character/$param';
+      case Endpoints.charactersFilter:
+        return 'character/';
     }
   }
 }

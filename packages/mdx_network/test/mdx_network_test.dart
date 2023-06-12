@@ -20,13 +20,19 @@ class NetworkModel {
 @GenerateMocks([http.Client, MDXNetwork])
 void main() {
   group('MDXNetwork', () {
-    group('MDXNetwork', () {
+    group('Abstract Class', () {
       test('should by default instance', () {
+        // arrange
+        // act
+        // assert
         expect(MDXNetwork.instance, isA<DefaultMDXNetwork>());
       });
       test('should override default instance', () {
+        // arrange
         final networkInstance = MockMDXNetwork();
+        // act
         MDXNetwork.overrideDefault(networkInstance);
+        // assert
         expect(MDXNetwork.instance, networkInstance);
       });
     });
@@ -40,25 +46,29 @@ void main() {
       });
 
       test('returns data if the http call completes successfully', () async {
+        // arrange
         when(mockClient.get(any)).thenAnswer(
           (_) async => http.Response(
             '{"id":1}',
             200,
           ),
         );
-
+        // act
         final model = await network.get(
           Endpoints.character,
           fromJson: NetworkModel.fromJson,
         );
+        // assert
         expect(model.id, 1);
       });
 
       test('throws an exception if the http call completes with an error',
           () async {
+        // arrange
         when(mockClient.get(any))
             .thenAnswer((_) async => http.Response('Not Found', 404));
-
+        // act
+        // assert
         await expectLater(
           network.get<NetworkModel>(
             Endpoints.character,
@@ -67,6 +77,32 @@ void main() {
           throwsA(isA<NetworkException>()),
         );
       });
+
+      test(
+          'return a list of data if the http call completes successfully and the responde is a list',
+          () async {
+        // arrange
+        when(mockClient.get(any)).thenAnswer(
+          (_) async => http.Response(
+            '[{"id":1},{"id":2}]',
+            200,
+          ),
+        );
+        // act
+        final model = await network.get(
+          Endpoints.charactersByIds,
+          fromJsonList: (jsonList) => jsonList
+              .map((m) => NetworkModel.fromJson(m as Map<String, dynamic>))
+              .toList(),
+        );
+        // assert
+        expect(model, isA<List<NetworkModel>>());
+        expect(model.length, equals(2));
+        expect(model.map((m) => m.id).toList(), equals([1, 2]));
+      });
+
+      // TODO: Make tests for uri maker
+      // group('UriMaker', () {});
     });
   });
 }
